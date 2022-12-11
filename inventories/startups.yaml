@@ -1,7 +1,7 @@
 ---
-name: sandbox
-githubTeam: sandbox
-rancherProjectName: sandbox
+name: next-sandbox
+githubTeam: next-sandbox
+rancherProjectName: next-sandbox
 # ---
 # githubTeam: test
 ---

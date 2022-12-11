@@ -5,7 +5,9 @@ module.exports = loaderFactory(async () => {
   const load = async (vars) => {
     const { number = 500 } = vars
     const data = [...new Array(number)].map((_, index) => ({
-      name: randomName({ seed: index }).toLowerCase().replaceAll(" ", "-"),
+      name: randomName({ seed: index + 1 })
+        .toLowerCase()
+        .replaceAll(" ", "-"),
     }))
     return data
   }
