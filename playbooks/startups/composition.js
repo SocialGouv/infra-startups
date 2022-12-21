@@ -1,4 +1,4 @@
-const { asyncCollCtx } = require("foundernetes")
+// const { asyncCollCtx } = require("foundernetes")
 
 const startupsLoaderFactory = require("~/loaders/startups/file")
 // const startupsLoaderFactory = require("~/loaders/startups/random")
@@ -18,8 +18,8 @@ const asyncCollLogMiddlewareFactory = require("~/middlewares/async-coll-log")
 // const varsMiddleware =
 
 module.exports = async () => {
-  const asyncCollLogMiddleware = await asyncCollLogMiddlewareFactory()
-  const asyncCollMiddlewares = [asyncCollLogMiddleware]
+  // const asyncCollLogMiddleware = await asyncCollLogMiddlewareFactory()
+  // const asyncCollMiddlewares = [asyncCollLogMiddleware]
 
   const rancherProjectPlay = await rancherProjectPlayFactory({
     // middlewares: [...asyncCollMiddlewares],
@@ -37,8 +37,12 @@ module.exports = async () => {
     rancherProject: rancherProjectPlay,
   }
 
+  const asyncCollLogMiddleware = await asyncCollLogMiddlewareFactory()
+  const middlewares = [asyncCollLogMiddleware]
+
   return {
     loaders,
     plays,
+    middlewares,
   }
 }

@@ -7,8 +7,11 @@ module.exports = () => ({
     const middlewares = asyncCollCtx.get("middlewares") || []
     asyncCollCtx.set("middlewares", middlewares)
     middlewares.push({
-      iteration: (coll, index) => {
-        playbookLogger.info({ coll, index }, "iteration")
+      collection: (collection) => {
+        playbookLogger.info({ collection }, "collection")
+      },
+      iteration: (item, index) => {
+        playbookLogger.info({ item, index }, "iteration")
       },
     })
   },

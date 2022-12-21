@@ -1,7 +1,8 @@
 ---
-name: next-sandbox
-githubTeam: next-sandbox
-rancherProjectName: next-sandbox
-# ---
-# githubTeam: test
+name: sandbox
+githubTeam: sandbox
+rancherProjectName: sandbox
+---
+name: fabrique
+githubTeam: sre
 ---
