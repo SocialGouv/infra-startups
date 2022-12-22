@@ -1,14 +1,32 @@
-const { async, ctx, asyncCollCtx, playbookCtx } = require("foundernetes")
+const {
+  async,
+  ctx,
+  playbookFactory,
+  // playbookCtx
+} = require("foundernetes")
 
-const asyncCollLogMiddlewareFactory = require("~/middlewares/async-coll-log")
+const asyncLoopLogMiddlewareFactory = require("~/middlewares/async-loop-log")
 
-const composition = require("./composition")
+const loadersFactory = require("./loaders")
+const playsFactory = require("./plays")
 
-module.exports = async () => {
-  const { loaders, plays, middlewares } = await composition()
+// playbookMiddlewareSymbol = Symbol("playbookMiddlewareSymbol")
+// const playbookMiddleware = createPlaybookMiddleware({
+//   asyncColl: (coll)=>{
+
+//   }
+//   // middleware = playbookMiddlewareSymbol
+// })
+// const loaderMiddleware =
+// const playMiddleware =
+// const varsMiddleware =
+
+module.exports = playbookFactory(async () => {
+  const loaders = await loadersFactory()
+  const plays = await playsFactory()
 
   const playbook = async () => {
-    const logger = ctx.require("logger")
+    // const logger = ctx.require("logger")
 
     const startupsList = await loaders.startups({
       file: "inventories/startups.yaml",
@@ -29,8 +47,11 @@ module.exports = async () => {
     // })
   }
 
+  const asyncLoopLogMiddleware = await asyncLoopLogMiddlewareFactory()
+  const middlewares = [asyncLoopLogMiddleware]
+
   return {
     playbook,
     middlewares,
   }
-}
+})

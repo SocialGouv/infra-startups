@@ -1,11 +1,11 @@
-const { playbookCtx, asyncCollCtx } = require("foundernetes")
+const { playbookCtx, asyncLoopCtx } = require("foundernetes")
 
 module.exports = () => ({
   registerContext: () => {
     const playbookLogger = playbookCtx.get("logger")
     // playbookLogger.child({},{indent: }).info({ coll, index }, "iteration")
-    const middlewares = asyncCollCtx.get("middlewares") || []
-    asyncCollCtx.set("middlewares", middlewares)
+    const middlewares = asyncLoopCtx.get("middlewares") || []
+    asyncLoopCtx.set("middlewares", middlewares)
     middlewares.push({
       collection: (collection) => {
         playbookLogger.info({ collection }, "collection")
