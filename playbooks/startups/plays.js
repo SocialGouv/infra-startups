@@ -1,8 +1,11 @@
 const rancherProjectPlayFactory = require("~/plays/rancher/project")
 
-module.exports = async () => {
+module.exports = async (common) => {
   const rancherProjectPlay = await rancherProjectPlayFactory({
-    // middlewares: [],
+    middlewares: ({ middlewares = [] }) => [
+      ...common.middlewares,
+      ...middlewares,
+    ],
   })
 
   return {

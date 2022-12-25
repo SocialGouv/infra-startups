@@ -1,13 +1,15 @@
 const { playbookFactory, ctx } = require("foundernetes")
 
+const commonFactory = require("./common")
 const loadersFactory = require("./loaders")
 const playsFactory = require("./plays")
 const iteratorsFactory = require("./iterators")
 
 module.exports = playbookFactory(async () => {
-  const loaders = await loadersFactory()
-  const plays = await playsFactory()
-  const iterators = await iteratorsFactory()
+  const common = await commonFactory()
+  const loaders = await loadersFactory({ ...common })
+  const plays = await playsFactory({ ...common })
+  const iterators = await iteratorsFactory({ ...common })
 
   const playbook = async () => {
     // const logger = ctx.require("logger")
@@ -33,7 +35,7 @@ module.exports = playbookFactory(async () => {
     // })
   }
 
-  const middlewares = []
+  const middlewares = [...common.middlewares]
 
   return {
     playbook,

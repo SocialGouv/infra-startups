@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ["!.foundernetesrc.js"],
   settings: {
     "import/resolver": {
       alias: true,

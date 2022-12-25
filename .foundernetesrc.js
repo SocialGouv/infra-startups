@@ -1,5 +1,1 @@
-module.exports = async ()=>{
-  return {
-    
-  }
-}
+module.exports = async () => ({})

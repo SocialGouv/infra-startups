@@ -1,9 +1,12 @@
 const startupsLoaderFactory = require("~/loaders/startups/file")
 // const startupsLoaderFactory = require("~/loaders/startups/random")
 
-module.exports = async () => {
+module.exports = async (common) => {
   const startupsLoader = await startupsLoaderFactory({
-    // middlewares: [],
+    middlewares: ({ middlewares = [] }) => [
+      ...common.middlewares,
+      ...middlewares,
+    ],
   })
 
   return {
