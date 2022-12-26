@@ -1,10 +1,10 @@
 const { iteratorFactory } = require("foundernetes")
 
-const iteratorLogMiddlewareFactory = require("~/middlewares/iterator-log")
+const iteratorDebugMiddlewareFactory = require("~/middlewares/iterator-debug")
 
 module.exports = iteratorFactory(async () => {
-  const logMiddleware = iteratorLogMiddlewareFactory()
-  const middlewares = [logMiddleware]
+  const debugMiddleware = iteratorDebugMiddlewareFactory()
+  const middlewares = [debugMiddleware]
   return {
     middlewares,
   }

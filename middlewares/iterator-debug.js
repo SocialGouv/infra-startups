@@ -6,10 +6,10 @@ module.exports = () => ({
   hook: ({ collection, item, index }, type) => {
     const logger = ctx.require("logger")
     if (type === "collection") {
-      logger.info({ collection }, "collection")
+      logger.debug({ collection }, "collection")
     }
     if (type === "iteration") {
-      logger.info({ item, index }, "iteration")
+      logger.debug({ item, index }, "iteration")
     }
   },
 })
